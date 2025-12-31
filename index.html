@@ -38,6 +38,29 @@
         <button py-click="calculate" class="eq">=</button>
     </div>
 </div>
+<script type="py">
+from pyscript import document
 
+display = document.querySelector("#display")
+
+def press(event):
+    val = event.target.value
+    if display.value == "0" or display.value == "Error":
+        display.value = val
+    else:
+        display.value += val
+
+def clear_screen(event):
+    display.value = "0"
+
+def calculate(event):
+    try:
+    
+        result = eval(display.value)
+        display.value = str(result)
+    except Exception:
+        display.value = "Error"
+</script>
 </body>
+
 </html>
